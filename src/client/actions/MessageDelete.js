@@ -13,7 +13,7 @@ class MessageDeleteAction extends Action {
     let message;
 
     if (channel) {
-      message = channel.messages.cache.get(data.id);
+      message = channel.messages.find(data.id);
       if (message) {
         channel.messages.delete(message.id);
         this.deleted.set(channel.id + message.id, message);
