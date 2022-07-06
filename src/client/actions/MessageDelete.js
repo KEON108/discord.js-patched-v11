@@ -9,7 +9,7 @@ class MessageDeleteAction extends Action {
 
   handle(data) {
     const client = this.client;
-    const channel = client.channels.get(data.channel_id);
+    const channel = client.channels.cache.get(data.channel_id);
     let message;
 
     if (channel) {
