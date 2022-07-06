@@ -10,9 +10,8 @@ class MessageDeleteAction extends Action {
   handle(data) {
     const client = this.client;
     const channel = client.channels.get(data.channel_id);
+    let message = channel.messages.get(data.id);
 
-    if (channel) {
-      let message = channel.messages.get(data.id);
       if (message) {
         channel.messages.delete(message.id);
         this.deleted.set(channel.id + message.id, message);
@@ -24,7 +23,6 @@ class MessageDeleteAction extends Action {
     }
 
     return { message };
-  }
 
   scheduleForDeletion(channelID, messageID) {
     this.client.setTimeout(() => this.deleted.delete(channelID + messageID),
