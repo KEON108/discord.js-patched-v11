@@ -1,4 +1,5 @@
 const Action = require('./Action');
+const Message = require('../../structures/Message');
 
 class MessageDeleteAction extends Action {
   constructor(client) {
